@@ -91,4 +91,9 @@ if($('legal')){
  const ioL=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('ativo'));mapa.get(e.target.id)?.classList.add('ativo')}}),{rootMargin:'-20% 0px -70% 0px'});
  document.querySelectorAll('.texto section').forEach(s=>ioL.observe(s));
 }
+/* contato */
+if($('contato')){
+ $('form-ctt').addEventListener('submit',e=>{e.preventDefault();const f=e.target,ok=f.checkValidity();
+  $('ct-aviso').textContent=ok?'Mensagem enviada! A equipe do iMatoGrosso responde pelo e-mail informado.':'Preencha nome, um e-mail válido e a mensagem.';if(ok)f.reset()});
+}
 })();
