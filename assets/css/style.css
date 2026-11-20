@@ -207,3 +207,22 @@ footer .copy .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-conten
 @media(max-width:900px){.legal{grid-template-columns:minmax(0,1fr);gap:20px}.legal .indice{position:static}.legal .indice ol{display:flex;flex-wrap:wrap;gap:4px 14px;border:0}.legal .indice a{padding:4px 0;border:0}}
 @media(max-width:600px){.legal table{font-size:13px}.legal thead{display:none}.legal tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.legal td{border:0;padding:3px 0}.legal td:first-child{font-weight:700}}
 @media(max-width:640px){footer .wrap>div>p{font-size:14px}.assina>span{display:none}.assina{gap:2px 16px}}
+
+/* ===== Hover e toque em todos os botões e links clicáveis ===== */
+.btn,.busca,.chips button,.tema button,.top .soc a,.top .ctt,.sh .mais,.fita a,.logo,.mini,.pt,.ferr button,.tags a,.form input,.form textarea,#q{transition:background-color .2s,color .2s,border-color .2s,opacity .2s,transform .15s,box-shadow .2s}
+.btn:hover{background:var(--k1);color:var(--k4);box-shadow:0 6px 16px rgb(0 0 0/.18);transform:translateY(-1px)}
+:root[data-theme=dark] .btn:hover{background:var(--k3);color:var(--k0)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn:hover{background:var(--k3);color:var(--k0)}}
+.btn:active,.pt:active,.chips button:active,.ferr button:active,.busca:active{transform:scale(.96);box-shadow:none}
+.busca{border-radius:99px}.busca:hover{background:var(--paper)}
+.chips button:hover{border-color:var(--ink)}.chips button[aria-pressed=true]:hover{background:var(--k1)}
+.tema button:hover{color:var(--k3)}
+.top .soc a{border-radius:99px}.top .soc a:hover{background:var(--k1)}
+.top .ctt:hover{color:var(--k4);text-decoration:underline;text-underline-offset:3px}
+.sh .mais .seta{display:inline-block;margin-left:4px;transition:transform .2s}.sh .mais:hover .seta{transform:translateX(4px)}.sh .mais:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+.fita a:hover{text-decoration:underline;text-underline-offset:3px}
+.logo:hover,.mini:hover{opacity:.8}
+.pt:hover{transform:translateY(-1px)}
+.form input:hover,.form textarea:hover,#q:hover{border-color:var(--ink)}
+.form input:focus,.form textarea:focus,#q:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgb(115 115 115/.3)}
+.trilha a,.vizinhas a,.indice a{transition:color .2s,border-color .2s}

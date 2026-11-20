@@ -24,6 +24,7 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 
 - **19/11/2026** — Política de Privacidade (`privacidade.html`, LGPD), com índice que acompanha a leitura. Link discreto no rodapé, ao lado da assinatura da AstraVox, **só o ícone**, sem texto (`astravox-icone.svg`, link www.astravox.com.br em nova aba). Aviso com link para a política no formulário de comentários.
 - **19/11/2026** — Rodapé: logo 25% menor (180 px) e texto em duas linhas ("…Rondonópolis," / "de Mato Grosso, do Brasil e do mundo.").
+- **19/11/2026** — Hover em todos os botões e links clicáveis (ver o fim de `style.css`): botões escurecem e sobem 1 px, ícones ganham fundo redondo, "Ver tudo" com seta que anda, campos de formulário escurecem a borda; toque afunda o botão.
 
 ## Em aberto
 
