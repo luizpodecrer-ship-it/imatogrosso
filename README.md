@@ -9,6 +9,7 @@ Abra `index.html` no navegador para ver a home. As manchetes e fotos são de exe
 ```
 index.html                 home
 noticia.html               página da notícia (single.php)
+privacidade.html           Política de Privacidade (página do WordPress)
 assets/css/style.css       todo o visual (variáveis no topo)
 assets/js/main.js          dados de exemplo + menu, faixa "Últimas", busca, filtro de cidades, seletor de tema
 assets/img/logo/           logo e ícone oficiais (preto e branco), em SVG

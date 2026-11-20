@@ -58,11 +58,11 @@ bola.style.transition='none';aplica(salvo);bola.offsetWidth;bola.style.transitio
 
 /* menu em abas */
 const menu=$('menu'),hov=menu.querySelector('.hov'),ind=menu.querySelector('.ind'),abas=[...menu.querySelectorAll('a')];
-const poe=(m,a)=>{m.style.left=a.parentElement.offsetLeft+'px';m.style.width=a.offsetWidth+'px'};
+const poe=(m,a)=>{if(!a){m.style.width='0px';return}m.style.left=a.parentElement.offsetLeft+'px';m.style.width=a.offsetWidth+'px'};
 const ativa=a=>{abas.forEach(x=>x.removeAttribute('aria-current'));a.setAttribute('aria-current','page');poe(ind,a)};
 abas.forEach(a=>{const v=()=>{poe(hov,a);hov.style.opacity=1};a.addEventListener('mouseenter',v);a.addEventListener('focus',v);a.addEventListener('click',()=>ativa(a))});
 menu.addEventListener('mouseleave',()=>hov.style.opacity=0);menu.addEventListener('focusout',()=>hov.style.opacity=0);
-const inicio=()=>{ind.style.transition='none';poe(ind,menu.querySelector('[aria-current]')||abas[0]);ind.offsetWidth;ind.style.transition=''};
+const inicio=()=>{ind.style.transition='none';poe(ind,menu.querySelector('[aria-current]'));ind.offsetWidth;ind.style.transition=''};
 document.fonts?document.fonts.ready.then(inicio):inicio();inicio();
 new ResizeObserver(()=>poe(ind,menu.querySelector('[aria-current]'))).observe(menu);
 /* página da notícia */
@@ -84,5 +84,11 @@ if($('artigo')){
  document.querySelectorAll('[data-tam]').forEach(b=>b.addEventListener('click',()=>poeTam(tam+ +b.dataset.tam)));
  $('form-com').addEventListener('submit',e=>{e.preventDefault();const f=e.target,ok=f.checkValidity();
   $('c-aviso').textContent=ok?'Obrigado! Seu comentário vai aparecer depois de aprovado.':'Preencha comentário, nome e um e-mail válido.';if(ok)f.reset()});
+}
+/* política de privacidade: índice acompanha a leitura */
+if($('legal')){
+ const links=[...document.querySelectorAll('.indice a')],mapa=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+ const ioL=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('ativo'));mapa.get(e.target.id)?.classList.add('ativo')}}),{rootMargin:'-20% 0px -70% 0px'});
+ document.querySelectorAll('.texto section').forEach(s=>ioL.observe(s));
 }
 })();

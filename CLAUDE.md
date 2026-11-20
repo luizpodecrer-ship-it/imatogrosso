@@ -21,7 +21,12 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **19/11/2026** — Página da notícia (`noticia.html`): trilha, chapéu, título, linha fina, autor/fonte, data, tempo de leitura, compartilhar (WhatsApp, Facebook, X, copiar link), foto com crédito, tamanho do texto, intertítulos e citações, assuntos, anterior/próxima, "Leia também", comentários e barra de leitura no topo. Banners 300×250 na lateral e no meio do texto são **proposta** (o site atual só tem o 728×90 na notícia).
 - **19/11/2026** — Manchete da home: foto grande na mesma altura da coluna de 3 destaques; miniaturas dos destaques em 16:9 (horizontal), com selo "Vídeo" quando a notícia é vídeo. Chapéus sem o "i" (Policial, Geral).
 
+- **19/11/2026** — Política de Privacidade (`privacidade.html`, LGPD), com índice que acompanha a leitura. Link discreto no rodapé, ao lado da assinatura "Desenvolvido por AstraVox" (ícone `astravox-icone.svg`, link www.astravox.com.br em nova aba). Aviso com link para a política no formulário de comentários.
+- **19/11/2026** — Rodapé: logo 25% menor (180 px) e texto em duas linhas ("…Rondonópolis," / "de Mato Grosso, do Brasil e do mundo.").
+
 ## Em aberto
+
+- Dados do controlador na Política de Privacidade (razão social, CNPJ, endereço, encarregado e e-mail), marcados como "a preencher".
 
 - Formato do banner do topo no celular (só encolher o 728×90 ou 320×50/320×100).
 - Posição de anúncio com botão "x" que existe no site atual (vazia hoje).
