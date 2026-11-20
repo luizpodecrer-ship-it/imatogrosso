@@ -45,8 +45,15 @@ $('chips').addEventListener('click',e=>{if(e.target.tagName==='BUTTON')pinta(e.t
 
 try{$('hoje').textContent=new Date().toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric',timeZone:'America/Cuiaba'})}catch(e){}
 const nav=$('nav'),io=new IntersectionObserver(([e])=>nav.classList.toggle('solto',!e.isIntersecting));io.observe(document.querySelector('.head'));
-$('bt').addEventListener('click',()=>{const on=$('bx').classList.toggle('on');$('bt').setAttribute('aria-expanded',on);if(on)$('q').focus()});
-$('fb-form').addEventListener('submit',e=>e.preventDefault());
+/* busca que se expande: lupa vira campo; X ou Esc fecham e limpam */
+const dock=$('dock'),dform=$('fb-form');let dockT;
+const abreBusca=()=>{clearTimeout(dockT);dform.hidden=false;requestAnimationFrame(()=>{dock.classList.add('aberto');$('bt').setAttribute('aria-expanded','true');setTimeout(()=>$('q').focus(),60)})};
+const fechaBusca=(foco)=>{dock.classList.remove('aberto');$('bt').setAttribute('aria-expanded','false');$('q').value='';dockT=setTimeout(()=>{dform.hidden=true},450);if(foco)$('bt').focus()};
+$('bt').addEventListener('click',abreBusca);
+$('dock-x').addEventListener('click',()=>fechaBusca(true));
+dform.addEventListener('keydown',e=>{if(e.key==='Escape')fechaBusca(true)});
+document.addEventListener('click',e=>{if(dock.classList.contains('aberto')&&!dock.contains(e.target)&&!$('q').value)fechaBusca(false)});
+$('fb-form').addEventListener('submit',e=>{e.preventDefault();if(!$('q').value.trim())$('q').focus()});
 /* tema do site: system segue o aparelho; light/dark fixam; a escolha fica guardada neste navegador */
 const raiz=document.documentElement,tema=$('tema'),bola=tema.querySelector('.tema-bola'),tbs=[...tema.querySelectorAll('button')];
 const aplica=t=>{if(t==='system')raiz.removeAttribute('data-theme');else raiz.dataset.theme=t;

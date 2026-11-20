@@ -88,6 +88,7 @@ Cada item de notícia nos dados de `main.js` segue `[chapéu, título, hora, res
 ## Comportamentos
 
 - **Menu em abas:** realce cinza que segue o mouse e traço que desliza até o item ativo (também pelo teclado).
+- **Busca:** a lupa do menu se abre num campo (`#dock`, `#fb-form`). No WordPress: `action="/"`, `method="get"` e `name="s"` no campo (já está), levando ao `search.php`.
 - **Menu fixo:** ao descer a página o menu fica preso no topo e mostra o logo pequeno.
 - **Seletor de tema** (barra do topo): sistema · claro · escuro. "Sistema" segue o aparelho; a escolha fica em `localStorage` (`imt-tema`) e vira `data-theme` no `<html>`.
 - **Responsivo:** 375 px (celular) a 1920 px. Respeita "reduzir movimento" do sistema.

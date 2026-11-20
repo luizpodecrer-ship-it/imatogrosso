@@ -55,10 +55,17 @@
   <li><a href="editoria.html?e=geral">Geral</a></li>
   <li><a href="editoria.html?e=esportes">Esportes</a></li>
  </ul>
- <button class="busca" id="bt" aria-expanded="false" aria-controls="bx" aria-label="Buscar"><svg><use href="#lupa"/></svg></button>
+ <!-- busca que se expande (ref. "expanding search dock", refeita em JS puro). WP: action="/" e name="s" -->
+ <div class="dock" id="dock">
+  <button class="dock-btn" id="bt" type="button" aria-expanded="false" aria-controls="fb-form" aria-label="Buscar"><svg><use href="#lupa"/></svg></button>
+  <form class="dock-form" id="fb-form" role="search" action="index.html" hidden>
+   <svg class="dock-lupa" aria-hidden="true"><use href="#lupa"/></svg>
+   <label class="vh" for="q">Buscar no iMatoGrosso</label>
+   <input id="q" name="s" type="search" placeholder="Buscar no iMatoGrosso…" autocomplete="off" enterkeyhint="search">
+   <button type="button" class="dock-x" id="dock-x" aria-label="Fechar busca"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </form>
+ </div>
 </div>
-<div class="bx wrap" id="bx"><form id="fb-form" role="search"><label class="vh" for="q">Buscar no iMatoGrosso</label>
- <input id="q" type="search" placeholder="Buscar notícias, cidades, assuntos…"><button class="btn">Buscar</button></form></div>
 </nav>
 
 <div class="ult" aria-label="Últimas notícias"><div class="wrap"><span class="tag">Últimas</span><div class="trilho"><div class="fita" id="fita"></div></div></div></div>
