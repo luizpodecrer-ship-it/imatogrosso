@@ -1,6 +1,7 @@
 (function(){
 const PLAY='<span class="play"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>Vídeo</span>';
-const ph=(f,eager,v)=>`<span class="ph">${v?PLAY:''}<img src="assets/img/fotos/${f}.jpg" alt="" ${eager?'fetchpriority="high"':'loading="lazy"'}></span>`;
+const SEMFOTO='<span class="ph semfoto" role="img" aria-label="Notícia sem foto"><svg viewBox="0 0 421.09 595.28"><use href="#ic"/></svg></span>';
+const ph=(f,eager,v)=>!f?SEMFOTO:`<span class="ph">${v?PLAY:''}<img src="assets/img/fotos/${f}.jpg" alt="" ${eager?'fetchpriority="high"':'loading="lazy"'}></span>`;
 const card=(n,dek)=>`<a href="noticia.html">${ph(n[4])}<div class="chap">${n[0]}</div><h3 class="t">${n[1]}</h3>${dek&&n[3]?`<p>${n[3]}</p>`:''}<span class="hora">${n[2]}</span></a>`;
 const li=n=>`<li><a href="noticia.html"><span class="hora">${n[2]}</span><h3 class="t">${n[1]}</h3></a></li>`;
 const $=id=>document.getElementById(id);
@@ -92,8 +93,106 @@ if($('legal')){
  document.querySelectorAll('.texto section').forEach(s=>ioL.observe(s));
 }
 /* contato */
-if($('contato')){
+if($('pg-contato')){
  $('form-ctt').addEventListener('submit',e=>{e.preventDefault();const f=e.target,ok=f.checkValidity();
   $('ct-aviso').textContent=ok?'Mensagem enviada! A equipe do iMatoGrosso responde pelo e-mail informado.':'Preencha nome, um e-mail válido e a mensagem.';if(ok)f.reset()});
+}
+/* página da editoria: editoria.html?e=policial|noticias|cidades|geral|esportes
+   [chapéu, título, quando, resumo, foto ('' = sem foto), cidade]  — no WordPress: posts da categoria */
+if($('editoria')){
+ const MT='Mato Grosso',CB='Cuiabá',VG='Várzea Grande',IN='Interior';
+ const EDS={
+  policial:{nome:'Policial',desc:'Ocorrências, operações e segurança pública em Cuiabá, Várzea Grande e todo o Mato Grosso.',itens:[
+   ['Segurança','MT reduz roubos em 75% entre 2019 e 2026 e registra a menor média mensal da série histórica','há 40 min','','roubos',MT],
+   ['Cuiabá','Polícia mira quadrilha especializada em furtar Hilux e SW4','há 1 h','','hilux',CB],
+   ['Segurança','Vigia Mais MT auxilia na recuperação de 149 veículos e devolve cerca de R$ 7 milhões em patrimônio','há 2 h','','vigia',MT],
+   ['Segurança','Governo de MT vai construir 22 unidades integradas da PM e Corpo de Bombeiros','há 3 h','','unidades',MT],
+   ['Várzea Grande','Governo de MT instala plantão 24 horas na Delegacia da Mulher e Vulneráveis em Várzea Grande','há 4 h','','',VG],
+   ['Várzea Grande','Polícia Civil prende homem que matou a esposa e ocultou corpo em córrego em Várzea Grande','há 5 h','','',VG],
+   ['Trânsito','Operação Lei Seca intensifica fiscalização e encaminha oito pessoas à delegacia','há 6 h','','',MT],
+   ['Cuiabá','Polícia Civil deflagra operação e desmantela grupo criminoso ligado a facção em Cuiabá','há 8 h','','',CB],
+   ['Interior','Polícia Civil cumpre mandados contra lideranças de facção criminosa na região norte de MT','ontem','','',IN],
+   ['Trânsito','Fiscalização rigorosa da Lei Seca Motos resulta em autuações e apreensão de veículos','ontem','','',MT],
+   ['Interior','Rotam prende dois homens e apreende fuzil e espingardas em Nova Lacerda','ontem','','',IN],
+   ['Polícia Civil','Polícia Civil prende suspeito que invadiu casa e furtou eletrônicos, carro e cachorro','17/11/2026','','',MT],
+   ['Cuiabá','Foragido da Justiça por homicídio no Maranhão é preso pela Cavalaria da PM em Cuiabá','17/11/2026','','',CB],
+   ['Cuiabá','Grupo suspeito de furtar caminhonetes é alvo de operação em Cuiabá','16/11/2026','','',CB],
+   ['MT','Jovem é morto a tiros em frente a bar em MT','16/11/2026','','',MT],
+   ['Interior','Operação mira grupo suspeito de comandar tráfico de drogas e cumpre mandados em cinco cidades de MT','15/11/2026','','',IN],
+   ['Justiça','Justiça aceita denúncia contra motorista acusado de matar criança de 4 anos em acidente em MT','15/11/2026','','',MT]]},
+  noticias:{nome:'Notícias',desc:'Governo, saúde, educação e serviços públicos de Mato Grosso.',itens:[
+   ['Mato Grosso','Campanha estadual pelo fim da violência contra a mulher mobiliza municípios com ações até 10 de dezembro','há 25 min','','campanha',MT],
+   ['Educação','Seduc reforça recomendações para o segundo dia de provas do Enem 2026','há 2 h','','enem',MT],
+   ['Educação','Cinco escolas da Rede Estadual de MT são vencedoras do Programa Guardiões do Pantanal','há 3 h','','guardioes',IN],
+   ['Saúde','Em mais de 100 dias internado, paciente reaprende a falar e andar com apoio multidisciplinar no Hospital Central','há 4 h','','paciente',CB],
+   ['Educação','Seduc abre período de recursos contra resultado de processo seletivo das Escolas Estaduais Militares','há 5 h','','seduc',MT],
+   ['Educação','Seduc e Ministério Público discutem acompanhamento dos planos de educação do Estado e dos municípios','há 6 h','','seducmp',MT],
+   ['Detran','Detran-MT orienta sobre golpes com falsas vagas da CNH Social','ontem','','cnh',MT],
+   ['Serviços','Veja o que abre e fecha durante ponto facultativo e feriado em MT','ontem','','paiaguas',MT],
+   ['Saúde','MT Hemocentro abre neste sábado para incentivar a doação de sangue','17/11/2026','','hemocentro',CB],
+   ['Brasil','Anvisa proíbe lotes irregulares de medicamento para esclerose múltipla','16/11/2026','','anvisa','Brasil'],
+   ['Serviços','Governo de MT disponibiliza seis novos serviços digitais para egressos do sistema prisional','15/11/2026','','',MT]]},
+  cidades:{nome:'Cidades',desc:'Cuiabá, Várzea Grande, Rondonópolis, Sinop e as cidades do interior.',itens:[
+   ['Cuiabá','Prefeitura de Cuiabá muda rotina de agentes de saúde devido ao calor extremo','há 1 h','','calor',CB],
+   ['Cuiabá','Prefeitura de Cuiabá fortalece empreendedorismo feminino com capacitação e geração de renda','há 3 h','','empreende',CB],
+   ['Cuiabá','Cuiabá mantém casos de meningite dentro da normalidade e reforça vacinação no Dia D','há 4 h','','meningite',CB],
+   ['Cuiabá','Cuiabá ganha destaque com opções de roteiros turísticos apresentados em festival nacional','há 5 h','','turismo',CB],
+   ['Sinop','Hospital Regional de Sinop recebe reconhecimento nacional em prática de segurança do paciente','há 7 h','','','Sinop'],
+   ['Cuiabá','Nelsinho Piquet vence em Cuiabá única prova noturna do circuito brasileiro de Stock Car','ontem','','',CB],
+   ['Barra do Garças','Polícia Civil identifica suspeito de furto e recupera materiais subtraídos em obra em Barra do Garças','ontem','','','Barra do Garças'],
+   ['Economia','Mato Grosso gera mais de 22 mil empregos formais no primeiro trimestre de 2026','17/11/2026','','',MT],
+   ['Saúde','Saúde ultrapassa 3,6 milhões de atendimentos com novas unidades, equipamentos e redução das filas','16/11/2026','','',MT],
+   ['Economia','Mercado mantém estáveis projeções para inflação, juros, PIB e dólar','15/11/2026','','mercado','Brasil']]},
+  geral:{nome:'Geral',desc:'Economia, política, emprego e os assuntos que mexem com o dia a dia de Mato Grosso.',itens:[
+   ['Governo','Governo de MT sanciona lei que autoriza empréstimo para ampliar a saúde e construir 60 mil casas populares','há 2 h','','lei',MT],
+   ['Educação','Seciteci inicia cursos profissionalizantes para 116 pessoas privadas de liberdade em Cuiabá','há 3 h','','seciteci',CB],
+   ['Educação','Seduc abre período de recursos contra resultado de processo seletivo das Escolas Estaduais Militares','há 4 h','','seduc',MT],
+   ['Segurança','Governo de MT vai construir 22 unidades integradas da PM e Corpo de Bombeiros','há 5 h','','unidades',MT],
+   ['Educação','Seduc e Ministério Público discutem acompanhamento dos planos de educação do Estado e dos municípios','há 6 h','','seducmp',MT],
+   ['Segurança','Vigia Mais MT auxilia na recuperação de 149 veículos e devolve cerca de R$ 7 milhões em patrimônio','ontem','','vigia',MT],
+   ['Saúde','Em mais de 100 dias internado, paciente reaprende a falar e andar com apoio multidisciplinar no Hospital Central','ontem','','paciente',CB],
+   ['Detran','Detran-MT orienta sobre golpes com falsas vagas da CNH Social','17/11/2026','','cnh',MT],
+   ['Segurança','MT reduz roubos em 75% entre 2019 e 2026 e registra a menor média mensal da série histórica','16/11/2026','','roubos',MT]]},
+  esportes:{nome:'Esportes',desc:'Futebol, vôlei, basquete e tudo o que movimenta o esporte em Mato Grosso, no Brasil e no mundo.',itens:[
+   ['Futebol','Palmeiras x Fortaleza terá trânsito sem interdições na Arena Pantanal','há 1 h','','futebol',CB],
+   ['Vôlei de praia','Carol e Rebecca estão na final do Circuito Mundial','há 3 h','','volei','Brasil'],
+   ['Basquete','Brasil vence Chile na estreia do Sul-Americano de basquete feminino','há 4 h','','basquete','Brasil'],
+   ['Futebol','Santos faz 2 a 0 no Fluminense fora de casa pelo Brasileiro Feminino','há 5 h','','','Brasil'],
+   ['Futebol','Fluminense arranca empate na Argentina e continua vivo na Libertadores','há 6 h','','','Brasil'],
+   ['Futebol','Palmeiras derrota Bragantino para manter liderança no Brasileiro','ontem','','','Brasil'],
+   ['Futebol','Convocação final para a Copa terá Museu do Amanhã como palco','ontem','','','Brasil'],
+   ['Copa do Brasil','Palmeiras bate Jacuipense e encaminha classificação na Copa do Brasil','17/11/2026','','','Brasil'],
+   ['Copa do Brasil','Flamengo estreia na Copa do Brasil com triunfo de 2 a 1 sobre o Vitória','17/11/2026','','','Brasil'],
+   ['Copa do Brasil','Botafogo bate Chape em jogo de abertura da 5ª fase da Copa do Brasil','16/11/2026','','','Brasil'],
+   ['Tênis de mesa','São José dos Campos sediará WTT Star Contender em julho','16/11/2026','','','Brasil'],
+   ['Tênis','João Fonseca encara ex-top 3 Cilic na estreia do Masters 1000 de Madri','15/11/2026','','','Mundo']]}
+ };
+ let chave='policial';try{chave=new URLSearchParams(location.search).get('e')||'policial'}catch(e){}
+ if(!EDS[chave])chave='policial';
+ const ed=EDS[chave],POR=6;
+ document.title=ed.nome+' · iMatoGrosso';
+ $('ed-nome').textContent=ed.nome;$('ed-trilha').textContent=ed.nome;$('ed-desc').textContent=ed.desc;$('ed-mais-tit').textContent='Mais de '+ed.nome;
+ document.querySelectorAll('#menu a').forEach(a=>{if(a.getAttribute('href')==='editoria.html?e='+chave)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ const item=n=>`<li><a href="noticia.html">${ph(n[4])}<div><div class="chap">${n[0]}</div><h3 class="t">${n[1]}</h3><span class="hora">${n[2]}</span></div></a></li>`;
+ let lista=ed.itens,mostra=POR;
+ const pinta=()=>{
+  const l=lista,cheio=l.length>=4,top=cheio?l.slice(0,4):[],resto=cheio?l.slice(4):l;
+  $('ed-topo').hidden=!cheio;
+  if(cheio){const n=top[0];$('ed-lead').innerHTML=`${ph(n[4],1)}<div class="sobre"><div class="chap">${n[0]}</div><h2 class="t">${n[1]}</h2><span class="hora">${n[2]}</span></div>`;
+   $('ed-lead').classList.toggle('sem',!n[4]);
+   $('ed-lado').innerHTML=top.slice(1).map(n=>`<a href="noticia.html">${ph(n[4],0,n[0]==='Vídeo')}<div><div class="chap">${n[0]}</div><h3 class="t">${n[1]}</h3><span class="hora">${n[2]}</span></div></a>`).join('');}
+  $('ed-lista').innerHTML=resto.slice(0,mostra).map(item).join('');
+  $('ed-mais').hidden=resto.length<=mostra;
+  const v=$('ed-vazio');v.hidden=!!resto.length&&l.length>0;v.textContent=l.length?'Por enquanto são só estas notícias.':'Ainda não há notícias desta cidade em '+ed.nome+'.';
+ };
+ const cids=[...new Set(ed.itens.map(n=>n[5]))];
+ if(cids.length>1){$('ed-chips').innerHTML=['Todas',...cids].map((c,i)=>`<button type="button" aria-pressed="${!i}">${c}</button>`).join('');
+  $('ed-chips').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+   $('ed-chips').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+   lista=b.textContent==='Todas'?ed.itens:ed.itens.filter(n=>n[5]===b.textContent);mostra=POR;pinta()})}
+ else $('ed-chips').remove();
+ $('ed-mais').addEventListener('click',()=>{const antes=mostra;mostra+=POR;pinta();$('ed-lista').children[antes]?.querySelector('a')?.focus()});
+ pinta();
+ $('lidas').innerHTML=ed.itens.slice(1,6).map(n=>`<li><a href="noticia.html"><h3 class="t">${n[1]}</h3></a></li>`).join('');
 }
 })();

@@ -10,6 +10,7 @@ Abra `index.html` no navegador para ver a home. As manchetes e fotos são de exe
 index.html                 home
 noticia.html               página da notícia (single.php)
 privacidade.html           Política de Privacidade (página do WordPress)
+editoria.html              página da editoria (category.php), ?e=policial|noticias|cidades|geral|esportes
 contato.html               Contato (página + Contact Form 7 para atendimento@imatogrosso.com.br)
 assets/css/style.css       todo o visual (variáveis no topo)
 assets/js/main.js          dados de exemplo + menu, faixa "Últimas", busca, filtro de cidades, seletor de tema
@@ -41,6 +42,17 @@ assets/img/fotos/          fotos de exemplo
 | Leia também | 4 posts da mesma categoria |
 | Comentários | `comments_template()` (moderação ligada) |
 
+## Página da editoria → WordPress
+
+| Parte | Origem |
+|---|---|
+| Nome, descrição | nome e descrição da categoria |
+| Filtro de cidades | tag ou campo "cidade" dos posts da categoria (some quando há só uma cidade) |
+| Destaque (foto + 3) | 4 posts mais recentes da categoria |
+| "Mais de …" | os demais posts; "Carregar mais notícias" (AJAX) ou `paginate_links()` |
+| Lateral | posição `banner-editoria-lateral-300x250` + Mais lidas da categoria |
+| Notícia sem imagem destacada | mostrar o bloco `.ph.semfoto` (ícone do "i" sobre cinza) |
+
 ## Publicidade (mesmos formatos do site atual)
 
 | Posição no WP Bannerize | Tamanho | Onde fica |
@@ -56,7 +68,7 @@ Na página da notícia, além do 728 × 90 do topo, há duas posições novas no
 | `banner-noticia-lateral-300x250` | 300 × 250 | lateral da notícia, acima de "Mais lidas" |
 | `banner-noticia-meio-300x250` | 300 × 250 | no meio do texto da notícia |
 
-Os espaços estão marcados no HTML com o comentário `<!-- WP: ... -->`. No celular o 728 × 90 hoje só encolhe (formato próprio para celular ainda a definir).
+Os espaços estão marcados no HTML com o comentário `<!-- WP: ... -->`. No celular o 728 × 90 só encolhe proporcionalmente (decisão aprovada: sem formato próprio para celular).
 
 ## Do protótipo para o WordPress
 

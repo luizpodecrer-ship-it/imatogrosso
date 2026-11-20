@@ -12,6 +12,7 @@
  --heading-font:"Poppins",system-ui,sans-serif;--body-font:"Libre Franklin",system-ui,sans-serif;--cond:var(--heading-font);--sans:var(--body-font);--w:1240px}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);overflow-x:clip}
 a{color:inherit;text-decoration:none}a:hover .t{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 :focus-visible{outline:3px solid var(--strong);outline-offset:2px}
@@ -203,7 +204,6 @@ footer .copy .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-conten
 .legal th{font-family:var(--heading-font);background:var(--paper)}
 .legal .resumo{background:var(--paper);padding:20px 24px;margin:0 0 8px}
 .legal .resumo p{margin:0}
-.preencher{background:var(--ink);color:var(--bg);padding:1px 6px;font-size:.9em;white-space:nowrap}
 @media(max-width:900px){.legal{grid-template-columns:minmax(0,1fr);gap:20px}.legal .indice{position:static}.legal .indice ol{display:flex;flex-wrap:wrap;gap:4px 14px;border:0}.legal .indice a{padding:4px 0;border:0}}
 @media(max-width:600px){.legal table{font-size:13px}.legal thead{display:none}.legal tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.legal td{border:0;padding:3px 0}.legal td:first-child{font-weight:700}}
 @media(max-width:640px){footer .wrap>div>p{font-size:14px}.assina>span{display:none}.assina{gap:2px 16px}}
@@ -246,3 +246,26 @@ footer .copy .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-conten
 .canal .mapa .seta{display:inline-block;margin-left:6px;transition:transform .2s}.canal .mapa:hover .seta{transform:translateX(4px)}
 .canal .redes{display:flex;gap:20px}
 @media(max-width:900px){.contato-grade{grid-template-columns:minmax(0,1fr);gap:32px}}
+
+/* ===== Notícia sem foto (comum em Policial e Esportes) ===== */
+.ph.semfoto{display:grid;place-items:center;background:var(--paper)}
+.ph.semfoto svg{width:auto;height:34%;max-height:72px;fill:var(--k2);opacity:.45}
+.lead.sem{background:var(--k1)}.lead.sem .ph.semfoto{background:var(--k1)}.lead.sem .ph.semfoto svg{fill:var(--k2);height:26%}
+
+/* ===== Editoria ===== */
+.ed-cab{padding:14px 0 26px}
+.ed-nome{display:flex;align-items:center;gap:16px}
+.ed-nome .i{width:42px;height:60px;fill:var(--ink);flex:none}
+.ed-nome h1{margin:0;font:700 clamp(36px,5vw,60px)/1 var(--heading-font);text-transform:uppercase}
+.ed-cab .fina{margin:14px 0 18px}
+.ed-cab .chips{margin:0}
+#ed-topo{padding-top:0;border-top:3px solid var(--ink);padding-top:24px}
+.ed-grade{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;padding-top:36px}
+.ed-lista{list-style:none;margin:0;padding:0}
+.ed-lista a{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:20px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
+.ed-lista li:first-child a{padding-top:0}
+.ed-lista .ph{aspect-ratio:16/9}.ed-lista .t{font-size:19px;line-height:1.3;margin:6px 0 8px}
+.ed-mais{margin-top:24px;border-radius:8px;text-transform:none;font-family:var(--heading-font)}
+.ed-vazio{color:var(--mut);margin:20px 0 0}
+@media(max-width:1000px){.ed-grade{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.ed-lista a{grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:14px}.ed-lista .t{font-size:16px}.ed-nome .i{width:30px;height:43px}}

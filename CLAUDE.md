@@ -26,14 +26,16 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **19/11/2026** — Rodapé: logo 25% menor (180 px) e texto em duas linhas ("…Rondonópolis," / "de Mato Grosso, do Brasil e do mundo.").
 - **19/11/2026** — Hover em todos os botões e links clicáveis (ver o fim de `style.css`): botões escurecem e sobem 1 px, ícones ganham fundo redondo, "Ver tudo" com seta que anda, campos de formulário escurecem a borda; toque afunda o botão.
 - **19/11/2026** — Página de Contato própria (`contato.html`): formulário com assunto (pauta, anunciar, correção, outro), e-mails de atendimento e redação, endereço com mapa e redes. **Nenhum link aponta mais para o site antigo** (topo, ícone de e-mail, rodapé, política).
+- **19/11/2026** — Banner do topo no celular: o 728×90 **só encolhe** (sem formato próprio para celular).
+- **19/11/2026** — Política de Privacidade com **dados fictícios** por enquanto (iMatoGrosso Comunicação Ltda., CNPJ 00.000.000/0001-00, encarregado "Fulano de Tal", privacidade@imatogrosso.com.br). Trocar pelos reais antes de publicar.
+- **19/11/2026** — Página da editoria (`editoria.html?e=policial|noticias|cidades|geral|esportes`, uma página para todas): título grande com o ícone, descrição, filtro por cidade, destaque igual ao da home (foto + 3), lista "Mais de …" com "Carregar mais notícias", lateral com 300×250 e Mais lidas. Notícia sem foto (comum em Policial e Esportes no site atual) mostra o ícone do "i" sobre cinza. Menu, "Ver tudo" e rodapé apontam para ela.
 
 ## Em aberto
 
-- Dados do controlador na Política de Privacidade (razão social, CNPJ, endereço, encarregado e e-mail), marcados como "a preencher".
+- Dados reais do controlador na Política de Privacidade (hoje fictícios).
 
-- Formato do banner do topo no celular (só encolher o 728×90 ou 320×50/320×100).
 - Posição de anúncio com botão "x" que existe no site atual (vazia hoje).
-- Próxima tela: página da editoria.
+- Próximas telas sugeridas: resultado da busca e página 404.
 
 ## Publicar
 
