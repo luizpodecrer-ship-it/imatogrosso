@@ -267,12 +267,12 @@ footer .copy .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-conten
 
 /* ===== Busca que se expande (ref. "expanding search dock") ===== */
 .dock{position:relative;margin-left:auto;display:flex;justify-content:flex-end;align-items:center;height:48px;flex:none}
-.dock-btn{display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid var(--line);border-radius:99px;background:var(--bg);color:var(--ink);cursor:pointer;
+.dock-btn{display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--ink);cursor:pointer;
  transition:background-color .2s,border-color .2s,transform .35s cubic-bezier(.34,1.56,.64,1),opacity .2s}
 .dock-btn svg{width:20px;height:20px;fill:currentColor}
 .dock-btn:hover{background:var(--paper);border-color:var(--ink)}.dock-btn:active{transform:scale(.9)}
 .dock-form{position:absolute;right:0;top:0;z-index:5;display:flex;align-items:center;gap:8px;width:48px;height:48px;overflow:hidden;opacity:0;
- border:1px solid var(--line);border-radius:99px;background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+ border:1px solid var(--line);border-radius:0;background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
  box-shadow:0 8px 24px rgb(0 0 0/.12);transition:width .45s cubic-bezier(.34,1.3,.64,1),opacity .2s}
 .dock.aberto .dock-form{width:min(320px,calc(100vw - 32px));opacity:1}
 .dock.aberto .dock-btn{transform:scale(0);opacity:0}
@@ -281,7 +281,7 @@ footer .copy .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-conten
 .dock-form input::placeholder{color:var(--mut)}
 .dock-form input::-webkit-search-cancel-button{display:none}
 .dock-form:focus-within{border-color:var(--ink)}
-.dock-x{display:grid;place-items:center;width:32px;height:32px;margin-right:7px;padding:0;border:0;border-radius:99px;background:none;color:var(--ink);cursor:pointer;flex:none;
+.dock-x{display:grid;place-items:center;width:32px;height:32px;margin-right:7px;padding:0;border:0;border-radius:0;background:none;color:var(--ink);cursor:pointer;flex:none;
  transform:scale(0);transition:transform .3s cubic-bezier(.34,1.56,.64,1) .1s,background-color .2s}
 .dock.aberto .dock-x{transform:scale(1)}
 .dock-x:hover{background:var(--paper);transform:scale(1.1)}.dock-x:active{transform:scale(.9)}
