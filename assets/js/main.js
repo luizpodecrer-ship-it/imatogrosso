@@ -23,7 +23,7 @@ const ger=[['Geral','Governo de MT sanciona lei que autoriza empréstimo para am
 const lidas=[lado[0],lado[2],esp[0],pol[1],not[0]];
 
 if($('lead')){
-$('lead').innerHTML=`${ph(lead[4],1)}<div class="sobre"><div class="chap">${lead[0]}</div><h2 class="t">${lead[1]}</h2><p>${lead[3]}</p><span class="hora">${lead[2]}</span></div>`;
+$('lead').innerHTML=`${ph(lead[4],1)}<div class="sobre"><div class="chap">${lead[0]}</div><h2 class="t">${lead[1]}</h2><span class="hora">${lead[2]}</span></div>`;
 $('lado').innerHTML=lado.map(n=>`<a href="noticia.html">${ph(n[4],0,n[0]==='Vídeo')}<div><div class="chap">${n[0]}</div><h3 class="t">${n[1]}</h3><span class="hora">${n[2]}</span></div></a>`).join('');
 $('faixa').innerHTML=faixa.map(n=>`<a href="noticia.html"><div class="chap">${n[0]}</div><h3 class="t">${n[1]}</h3><span class="hora">${n[2]}</span></a>`).join('');
 $('polG').innerHTML=card(pol[0],1).replace(/^<a href="noticia.html">|<\/a>$/g,'');$('polL').innerHTML=pol.slice(1).map(li).join('');
