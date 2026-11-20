@@ -49,7 +49,12 @@ assets/img/fotos/          fotos de exemplo
 | `banner-esquerdo-inferior-300x250` | 300 × 250 | linha "Mais lidas", à esquerda |
 | `banner-direito-inferior-300x250` | 300 × 250 | linha "Mais lidas", à direita |
 
-Na página da notícia há duas posições **propostas** no mesmo formato 300 × 250 (lateral e meio do texto), ainda a aprovar.
+Na página da notícia, além do 728 × 90 do topo, há duas posições novas no mesmo formato 300 × 250 (aprovadas):
+
+| Posição (criar no WP Bannerize) | Tamanho | Onde fica |
+|---|---|---|
+| `banner-noticia-lateral-300x250` | 300 × 250 | lateral da notícia, acima de "Mais lidas" |
+| `banner-noticia-meio-300x250` | 300 × 250 | no meio do texto da notícia |
 
 Os espaços estão marcados no HTML com o comentário `<!-- WP: ... -->`. No celular o 728 × 90 hoje só encolhe (formato próprio para celular ainda a definir).
 
