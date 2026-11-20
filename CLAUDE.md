@@ -23,3 +23,8 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - Formato do banner do topo no celular (só encolher o 728×90 ou 320×50/320×100).
 - Posição de anúncio com botão "x" que existe no site atual (vazia hoje).
 - Próximas telas: página da notícia e página da editoria.
+
+## Publicar
+
+- Netlify: projeto **imatogrosso** (id `e3bf60f8-3272-4c54-adab-4a4d11e203f3`, time "luizpodecrer"), endereço https://imatogrosso.netlify.app — aberto para visitantes (sem login), é o link que vai para o cliente.
+- O Netlify **não** está ligado ao GitHub: a cada entrega, enviar ao GitHub e publicar de novo pela ferramenta do Netlify (`deploy-site`, rodando o comando dentro desta pasta). `netlify.toml` publica a raiz sem build e esconde `CLAUDE.md`, `README.md` e `netlify.toml`.
