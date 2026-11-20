@@ -18,11 +18,15 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **19/11/2026** — Menu branco em abas (realce que segue o mouse, traço que desliza até o ativo), a partir da referência "vercel-tabs".
 - **19/11/2026** — Seletor de tema sistema/claro/escuro na barra do topo, a partir da referência "ThemeSwitcher".
 
+- **19/11/2026** — Página da notícia (`noticia.html`): trilha, chapéu, título, linha fina, autor/fonte, data, tempo de leitura, compartilhar (WhatsApp, Facebook, X, copiar link), foto com crédito, tamanho do texto, intertítulos e citações, assuntos, anterior/próxima, "Leia também", comentários e barra de leitura no topo. Banners 300×250 na lateral e no meio do texto são **proposta** (o site atual só tem o 728×90 na notícia).
+- **19/11/2026** — Manchete da home: foto grande na mesma altura da coluna de 3 destaques; miniaturas dos destaques em 16:9 (horizontal), com selo "Vídeo" quando a notícia é vídeo. Chapéus sem o "i" (Policial, Geral).
+
 ## Em aberto
 
 - Formato do banner do topo no celular (só encolher o 728×90 ou 320×50/320×100).
 - Posição de anúncio com botão "x" que existe no site atual (vazia hoje).
-- Próximas telas: página da notícia e página da editoria.
+- Aprovar os 2 banners propostos na página da notícia.
+- Próxima tela: página da editoria.
 
 ## Publicar
 

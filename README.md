@@ -8,6 +8,7 @@ Abra `index.html` no navegador para ver a home. As manchetes e fotos são de exe
 
 ```
 index.html                 home
+noticia.html               página da notícia (single.php)
 assets/css/style.css       todo o visual (variáveis no topo)
 assets/js/main.js          dados de exemplo + menu, faixa "Últimas", busca, filtro de cidades, seletor de tema
 assets/img/logo/           logo e ícone oficiais (preto e branco), em SVG
@@ -24,6 +25,20 @@ assets/img/fotos/          fotos de exemplo
 | Ícone das seções | `imt-icone-preto.svg` (no fundo escuro, `imt-icone-branco.svg`) |
 | Favicon | `imt-icone-preto.svg` — gerar também PNG 32, 180 (apple-touch-icon) e 512 px |
 
+## Página da notícia → WordPress
+
+| Parte | Origem |
+|---|---|
+| Trilha, chapéu | categoria principal do post (e cidade) |
+| Título, linha fina | título e resumo (excerpt) |
+| Autor · fonte, data, atualizado | autor, `get_the_date()`, `get_the_modified_date()`; tempo de leitura = palavras ÷ 200 |
+| Foto e crédito | imagem destacada + legenda/crédito da mídia |
+| Corpo | `the_content()`: parágrafos, `h2` (intertítulos), `blockquote` com `cite` |
+| Assuntos | tags do post |
+| Anterior / Próxima | `previous_post_link()` / `next_post_link()` |
+| Leia também | 4 posts da mesma categoria |
+| Comentários | `comments_template()` (moderação ligada) |
+
 ## Publicidade (mesmos formatos do site atual)
 
 | Posição no WP Bannerize | Tamanho | Onde fica |
@@ -31,6 +46,8 @@ assets/img/fotos/          fotos de exemplo
 | `banner-top-728x90` | 728 × 90 | cabeçalho, ao lado do logo |
 | `banner-esquerdo-inferior-300x250` | 300 × 250 | linha "Mais lidas", à esquerda |
 | `banner-direito-inferior-300x250` | 300 × 250 | linha "Mais lidas", à direita |
+
+Na página da notícia há duas posições **propostas** no mesmo formato 300 × 250 (lateral e meio do texto), ainda a aprovar.
 
 Os espaços estão marcados no HTML com o comentário `<!-- WP: ... -->`. No celular o 728 × 90 hoje só encolhe (formato próprio para celular ainda a definir).
 
