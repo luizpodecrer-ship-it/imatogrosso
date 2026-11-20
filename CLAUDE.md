@@ -30,6 +30,7 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **19/11/2026** — Política de Privacidade com **dados fictícios** por enquanto (iMatoGrosso Comunicação Ltda., CNPJ 00.000.000/0001-00, encarregado "Fulano de Tal", privacidade@imatogrosso.com.br). Trocar pelos reais antes de publicar.
 - **19/11/2026** — Página da editoria (`editoria.html?e=policial|noticias|cidades|geral|esportes`, uma página para todas): título grande com o ícone, descrição, filtro por cidade, destaque igual ao da home (foto + 3), lista "Mais de …" com "Carregar mais notícias", lateral com 300×250 e Mais lidas. Notícia sem foto (comum em Policial e Esportes no site atual) mostra o ícone do "i" sobre cinza. Menu, "Ver tudo" e rodapé apontam para ela.
 - **20/11/2026** — Busca do menu refeita a partir da referência "expanding search dock" (em JS puro): lupa redonda que se abre num campo de 320 px com lupa, texto e X; X ou Esc fecham e limpam; no celular o campo ocupa a largura toda. **Cantos retos** (o estilo do site não é arredondado).
+- **20/11/2026** — Linhas de divisão das seções finas (1 px preto, antes 3 px): títulos das seções, faixa abaixo da manchete, destaque da editoria e canais do contato.
 
 ## Em aberto
 
