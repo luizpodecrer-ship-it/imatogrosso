@@ -35,6 +35,7 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **21/11/2026** — Redes sociais do iMatoGrosso (links do site atual: Facebook profile.php?id=61579282092124 e Instagram @imatogrossomt): ícones no topo, botões com ícone no rodapé ("Siga-nos"), bloco "Siga o iMatoGrosso" na lateral da notícia e da editoria, e botões na página de Contato. **No menu, quadrados de Facebook e Instagram ao lado da lupa** (some abaixo de 820 px; no celular ficam no topo). Todos abrem em nova aba.
 - **21/11/2026** — **Botão claro/escuro animado é o padrão de tema do portal** (referência "AnimatedThemeToggle/SolarSwitch", refeita em JS/CSS puros): quadrado de 48 px com linha fina no menu, entre as redes sociais e a lupa (no celular fica ao lado da lupa); o sol se desfaz e a lua se desenha. Sem escolha salva, segue o aparelho; a escolha fica no navegador (`imt-tema`). O seletor de 3 opções da barra do topo saiu.
 - **21/11/2026** — **Todos os ícones de botão se desenham** (mesma técnica do botão claro/escuro): ícones de traço (Facebook, Instagram, e-mail, lupa, WhatsApp, X, link, fechar) com `pathLength=1`; ao passar o mouse, focar pelo teclado ou tocar, o traço se redesenha (keyframe `desenha` no fim do `style.css`). O X e a lupa da busca se desenham ao abrir o campo.
+- **21/11/2026** — Celular (até 480 px): cartões de notícia com foto à esquerda e chapéu, título e hora juntos à direita, com linha fina entre eles; menu fixo sem o logo pequeno (até 600 px); títulos de seção, destaques, Mais lidas e título da notícia um pouco menores.
 
 ## Em aberto
 
@@ -46,4 +47,5 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 ## Publicar
 
 - Netlify: projeto **imatogrosso** (id `e3bf60f8-3272-4c54-adab-4a4d11e203f3`, time "luizpodecrer"), endereço https://imatogrosso.netlify.app — aberto para visitantes (sem login), é o link que vai para o cliente.
+- Prévia para o Luiz antes do cliente (quando ele pedir "me mostre antes"): artifact privado https://claude.ai/artifact/4FKEqtoYX9EuaQ4THZpwA6 (slug `1a4b1199-0367-49b7-836b-6e80ae991bff`), publicado com os arquivos do repositório; o Netlify só depois da aprovação.
 - O Netlify **não** está ligado ao GitHub: a cada entrega, enviar ao GitHub e publicar de novo pela ferramenta do Netlify (`deploy-site`, rodando o comando dentro desta pasta). `netlify.toml` publica a raiz sem build e esconde `CLAUDE.md`, `README.md` e `netlify.toml`.
