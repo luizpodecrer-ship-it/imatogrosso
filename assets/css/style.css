@@ -319,3 +319,18 @@ footer .rede{color:var(--k4);border-color:var(--k1)}footer .rede:hover{backgroun
 .tema-tg.sem-anim path{transition:none}
 @media(prefers-reduced-motion:reduce){.tema-tg path{transition:none}}
 @media(max-width:820px){.tema-tg{margin-left:auto}.tema-tg+.dock{margin-left:2px}}
+
+/* ===== Ícones que se desenham (mesma técnica do botão claro/escuro) =====
+   Ícones de traço com pathLength="1": ao passar o mouse, focar ou tocar, o traço se redesenha. */
+.top .soc svg,.nav-redes svg,.rede svg,.pt svg,.dock-btn svg,.dock-lupa,.dock-x svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0;overflow:visible}
+.top .soc svg{stroke-width:2.2}
+@keyframes desenha{0%{stroke-dashoffset:1;transform:scale(.75)}60%{transform:scale(1.06)}100%{stroke-dashoffset:0;transform:scale(1)}}
+@media(hover:hover){
+ .top .soc a:hover svg,.nav-redes a:hover svg,.rede:hover svg,.pt:hover svg,.dock-btn:hover svg,.dock-x:hover svg{animation:desenha .7s cubic-bezier(.4,0,.2,1)}
+}
+.top .soc a:focus-visible svg,.nav-redes a:focus-visible svg,.rede:focus-visible svg,.pt:focus-visible svg,.dock-btn:focus-visible svg,
+.top .soc a:active svg,.nav-redes a:active svg,.rede:active svg,.pt:active svg,.dock-btn:active svg{animation:desenha .7s cubic-bezier(.4,0,.2,1)}
+.dock.aberto .dock-lupa,.dock.aberto .dock-x svg{animation:desenha .7s cubic-bezier(.4,0,.2,1) .15s both}
+.copia.ok svg{animation:desenha .7s cubic-bezier(.4,0,.2,1)}
+@media(prefers-reduced-motion:reduce){.top .soc svg,.nav-redes svg,.rede svg,.pt svg,.dock-btn svg,.dock-lupa,.dock-x svg{animation:none!important}}
+.top .soc{margin-left:auto}
