@@ -36,6 +36,7 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **21/11/2026** — **Botão claro/escuro animado é o padrão de tema do portal** (referência "AnimatedThemeToggle/SolarSwitch", refeita em JS/CSS puros): quadrado de 48 px com linha fina no menu, entre as redes sociais e a lupa (no celular fica ao lado da lupa); o sol se desfaz e a lua se desenha. Sem escolha salva, segue o aparelho; a escolha fica no navegador (`imt-tema`). O seletor de 3 opções da barra do topo saiu.
 - **21/11/2026** — **Todos os ícones de botão se desenham** (mesma técnica do botão claro/escuro): ícones de traço (Facebook, Instagram, e-mail, lupa, WhatsApp, X, link, fechar) com `pathLength=1`; ao passar o mouse, focar pelo teclado ou tocar, o traço se redesenha (keyframe `desenha` no fim do `style.css`). O X e a lupa da busca se desenham ao abrir o campo.
 - **21/11/2026** — Celular (até 480 px): cartões de notícia com foto à esquerda e chapéu, título e hora juntos à direita, com linha fina entre eles; menu fixo sem o logo pequeno (até 600 px); títulos de seção, destaques, Mais lidas e título da notícia um pouco menores.
+- **21/11/2026** — Filtros de cidade sempre na **mesma ordem** em todas as páginas: Todas, Cuiabá, Várzea Grande, Rondonópolis, Interior, Mato Grosso, Brasil, Mundo (`ORDEM_CID` no `main.js`). Cidades do interior (Sinop, Barra do Garças…) entram no filtro "Interior"; o chapéu continua com o nome da cidade.
 
 ## Em aberto
 

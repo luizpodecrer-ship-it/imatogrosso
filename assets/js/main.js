@@ -5,6 +5,9 @@ const ph=(f,eager,v)=>!f?SEMFOTO:`<span class="ph">${v?PLAY:''}<img src="assets/
 const card=(n,dek)=>`<a href="noticia.html">${ph(n[4])}<div class="chap">${n[0]}</div><h3 class="t">${n[1]}</h3>${dek&&n[3]?`<p>${n[3]}</p>`:''}<span class="hora">${n[2]}</span></a>`;
 const li=n=>`<li><a href="noticia.html"><span class="hora">${n[2]}</span><h3 class="t">${n[1]}</h3></a></li>`;
 const $=id=>document.getElementById(id);
+/* ordem fixa dos filtros de cidade em todo o portal */
+const ORDEM_CID=['Cuiabá','Várzea Grande','Rondonópolis','Interior','Mato Grosso','Brasil','Mundo'];
+const ordemCid=l=>l.sort((a,b)=>{const i=ORDEM_CID.indexOf(a),j=ORDEM_CID.indexOf(b);return (i<0?99:i)-(j<0?99:j)||a.localeCompare(b)});
 /* [chapéu, título, hora, resumo, foto, cidade] — no WordPress: categoria, título, data, resumo, imagem destacada */
 const lead=['Mato Grosso','Campanha estadual pelo fim da violência contra a mulher mobiliza municípios com ações até 10 de dezembro','há 25 min','Os 21 Dias de Ativismo começaram nesta quinta-feira com rodas de conversa, atendimento jurídico e mutirões em escolas de todo o estado.','campanha'];
 const lado=[['Policial','Polícia mira quadrilha especializada em furtar Hilux e SW4','há 1 h','','hilux'],['Cuiabá','Na ausência de Abilio, primeira-dama visita distrito alagado','há 2 h','','abilio'],['Vídeo','Entre destroços e tristeza, moradores mostram destruição após temporal no distrito de Aguaçu','há 3 h','','aguacu']];
@@ -36,7 +39,7 @@ $('gerG').innerHTML=card(ger[0],1).replace(/^<a href="noticia.html">|<\/a>$/g,''
 if($('fita')){const fita=[...pol,...not,...esp].slice(0,8).map(n=>`<a href="noticia.html"><b>${n[2].replace('há ','')}</b>${n[1]}</a>`).join('');$('fita').innerHTML=fita+fita;}
 
 if($('chips')){
-const cidades=['Todas',...new Set(cid.map(c=>c[5]))];
+const cidades=['Todas',...ordemCid([...new Set(cid.map(c=>c[5]))])];
 const pinta=c=>{$('cid').innerHTML=cid.filter(n=>c==='Todas'||n[5]===c).slice(0,4).map(n=>card(n)).join('');
  $('chips').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.textContent===c))};
 $('chips').innerHTML=cidades.map(c=>`<button type="button">${c}</button>`).join('');
@@ -144,9 +147,9 @@ if($('editoria')){
    ['Cuiabá','Prefeitura de Cuiabá fortalece empreendedorismo feminino com capacitação e geração de renda','há 3 h','','empreende',CB],
    ['Cuiabá','Cuiabá mantém casos de meningite dentro da normalidade e reforça vacinação no Dia D','há 4 h','','meningite',CB],
    ['Cuiabá','Cuiabá ganha destaque com opções de roteiros turísticos apresentados em festival nacional','há 5 h','','turismo',CB],
-   ['Sinop','Hospital Regional de Sinop recebe reconhecimento nacional em prática de segurança do paciente','há 7 h','','','Sinop'],
+   ['Sinop','Hospital Regional de Sinop recebe reconhecimento nacional em prática de segurança do paciente','há 7 h','','',IN],
    ['Cuiabá','Nelsinho Piquet vence em Cuiabá única prova noturna do circuito brasileiro de Stock Car','ontem','','',CB],
-   ['Barra do Garças','Polícia Civil identifica suspeito de furto e recupera materiais subtraídos em obra em Barra do Garças','ontem','','','Barra do Garças'],
+   ['Barra do Garças','Polícia Civil identifica suspeito de furto e recupera materiais subtraídos em obra em Barra do Garças','ontem','','',IN],
    ['Economia','Mato Grosso gera mais de 22 mil empregos formais no primeiro trimestre de 2026','17/11/2026','','',MT],
    ['Saúde','Saúde ultrapassa 3,6 milhões de atendimentos com novas unidades, equipamentos e redução das filas','16/11/2026','','',MT],
    ['Economia','Mercado mantém estáveis projeções para inflação, juros, PIB e dólar','15/11/2026','','mercado','Brasil']]},
@@ -192,7 +195,7 @@ if($('editoria')){
   $('ed-mais').hidden=resto.length<=mostra;
   const v=$('ed-vazio');v.hidden=!!resto.length&&l.length>0;v.textContent=l.length?'Por enquanto são só estas notícias.':'Ainda não há notícias desta cidade em '+ed.nome+'.';
  };
- const cids=[...new Set(ed.itens.map(n=>n[5]))];
+ const cids=ordemCid([...new Set(ed.itens.map(n=>n[5]))]);
  if(cids.length>1){$('ed-chips').innerHTML=['Todas',...cids].map((c,i)=>`<button type="button" aria-pressed="${!i}">${c}</button>`).join('');
   $('ed-chips').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
    $('ed-chips').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
