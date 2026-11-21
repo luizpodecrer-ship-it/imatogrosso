@@ -16,7 +16,7 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **19/11/2026** — Ícone oficial do "i" nos títulos das seções e como favicon. **Sem o "i" no menu.**
 - **19/11/2026** — Fontes: Poppins (títulos) e Libre Franklin (textos), em teste. O código enviado pelo Luiz dizia "libre"; usada a Libre Franklin.
 - **19/11/2026** — Menu branco em abas (realce que segue o mouse, traço que desliza até o ativo), a partir da referência "vercel-tabs".
-- **19/11/2026** — Seletor de tema sistema/claro/escuro na barra do topo, a partir da referência "ThemeSwitcher".
+- **19/11/2026** — Seletor de tema sistema/claro/escuro na barra do topo, a partir da referência "ThemeSwitcher". **Substituído em 21/11/2026** pelo botão claro/escuro animado (abaixo).
 
 - **19/11/2026** — Página da notícia (`noticia.html`): trilha, chapéu, título, linha fina, autor/fonte, data, tempo de leitura, compartilhar (WhatsApp, Facebook, X, copiar link), foto com crédito, tamanho do texto, intertítulos e citações, assuntos, anterior/próxima, "Leia também", comentários e barra de leitura no topo. Banners 300×250 na lateral e no meio do texto **aprovados em 19/11/2026** (além do 728×90 do topo).
 - **19/11/2026** — Manchete da home: foto grande na mesma altura da coluna de 3 destaques; miniaturas dos destaques em 16:9 (horizontal), com selo "Vídeo" quando a notícia é vídeo. Chapéus sem o "i" (Policial, Geral).
@@ -33,6 +33,7 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **20/11/2026** — Linhas de divisão das seções finas (1 px preto, antes 3 px): títulos das seções, faixa abaixo da manchete, destaque da editoria e canais do contato.
 - **20/11/2026** — **Nada arredondado no portal**: todos os botões, filtros, assuntos, campos, seletor de tema e selos com cantos retos. Botões de compartilhar e redes sociais em quadrados com a mesma linha fina da busca (1 px cinza claro; escurece no mouse).
 - **21/11/2026** — Redes sociais do iMatoGrosso (links do site atual: Facebook profile.php?id=61579282092124 e Instagram @imatogrossomt): ícones no topo, botões com ícone no rodapé ("Siga-nos"), bloco "Siga o iMatoGrosso" na lateral da notícia e da editoria, e botões na página de Contato. **No menu, quadrados de Facebook e Instagram ao lado da lupa** (some abaixo de 820 px; no celular ficam no topo). Todos abrem em nova aba.
+- **21/11/2026** — **Botão claro/escuro animado é o padrão de tema do portal** (referência "AnimatedThemeToggle/SolarSwitch", refeita em JS/CSS puros): quadrado de 48 px com linha fina no menu, entre as redes sociais e a lupa (no celular fica ao lado da lupa); o sol se desfaz e a lua se desenha. Sem escolha salva, segue o aparelho; a escolha fica no navegador (`imt-tema`). O seletor de 3 opções da barra do topo saiu.
 
 ## Em aberto
 

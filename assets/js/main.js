@@ -54,15 +54,15 @@ $('dock-x').addEventListener('click',()=>fechaBusca(true));
 dform.addEventListener('keydown',e=>{if(e.key==='Escape')fechaBusca(true)});
 document.addEventListener('click',e=>{if(dock.classList.contains('aberto')&&!dock.contains(e.target)&&!$('q').value)fechaBusca(false)});
 $('fb-form').addEventListener('submit',e=>{e.preventDefault();if(!$('q').value.trim())$('q').focus()});
-/* tema do site: system segue o aparelho; light/dark fixam; a escolha fica guardada neste navegador */
-const raiz=document.documentElement,tema=$('tema'),bola=tema.querySelector('.tema-bola'),tbs=[...tema.querySelectorAll('button')];
-const aplica=t=>{if(t==='system')raiz.removeAttribute('data-theme');else raiz.dataset.theme=t;
- tbs.forEach((b,i)=>{const on=b.dataset.t===t;b.setAttribute('aria-checked',on);b.tabIndex=on?0:-1;if(on)bola.style.transform=`translateX(${i*24}px)`});
- try{localStorage.setItem('imt-tema',t)}catch(e){}};
-tema.addEventListener('click',e=>{const b=e.target.closest('button');if(b)aplica(b.dataset.t)});
-tema.addEventListener('keydown',e=>{const i=tbs.indexOf(document.activeElement);if(i<0)return;const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;e.preventDefault();const b=tbs[(i+d+3)%3];aplica(b.dataset.t);b.focus()});
-let salvo='system';try{salvo=localStorage.getItem('imt-tema')||'system'}catch(e){}
-bola.style.transition='none';aplica(salvo);bola.offsetWidth;bola.style.transition='';
+/* tema: botão claro/escuro animado. Sem escolha salva, segue o aparelho; a escolha fica guardada neste navegador */
+const raiz=document.documentElement,tg=$('tema-tg'),mq=matchMedia('(prefers-color-scheme: dark)');
+const escuroAgora=()=>raiz.dataset.theme?raiz.dataset.theme==='dark':mq.matches;
+const mostra=()=>{const d=escuroAgora();tg.setAttribute('aria-pressed',d);tg.setAttribute('aria-label',d?'Modo claro':'Modo escuro');tg.title=d?'Mudar para o modo claro':'Mudar para o modo escuro'};
+let salvo=null;try{salvo=localStorage.getItem('imt-tema')}catch(e){}
+if(salvo==='light'||salvo==='dark')raiz.dataset.theme=salvo;
+tg.classList.add('sem-anim');mostra();requestAnimationFrame(()=>requestAnimationFrame(()=>tg.classList.remove('sem-anim')));
+tg.addEventListener('click',()=>{const t=escuroAgora()?'light':'dark';raiz.dataset.theme=t;try{localStorage.setItem('imt-tema',t)}catch(e){}mostra()});
+mq.addEventListener?.('change',()=>{if(!raiz.dataset.theme)mostra()});
 
 /* menu em abas */
 const menu=$('menu'),hov=menu.querySelector('.hov'),ind=menu.querySelector('.ind'),abas=[...menu.querySelectorAll('a')];
