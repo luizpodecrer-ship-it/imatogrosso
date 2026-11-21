@@ -334,3 +334,24 @@ footer .rede{color:var(--k4);border-color:var(--k1)}footer .rede:hover{backgroun
 .copia.ok svg{animation:desenha .7s cubic-bezier(.4,0,.2,1)}
 @media(prefers-reduced-motion:reduce){.top .soc svg,.nav-redes svg,.rede svg,.pt svg,.dock-btn svg,.dock-lupa,.dock-x svg{animation:none!important}}
 .top .soc{margin-left:auto}
+
+/* ===== Ajustes de celular (21/11/2026) ===== */
+@media(max-width:480px){
+ /* cartões: foto à esquerda; chapéu, título e hora juntos à direita */
+ .g4 a,.g3 a{grid-template-columns:42% minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:14px;row-gap:0;align-items:start;padding-bottom:16px;border-bottom:1px solid var(--line)}
+ .g4,.g3{gap:16px}
+ .g4 a>.ph,.g3 a>.ph{grid-column:1;grid-row:1/span 3;aspect-ratio:4/3}
+ .g4 a>:not(.ph),.g3 a>:not(.ph){grid-column:2}
+ .g4 a>.chap,.g3 a>.chap{margin:0}
+ .g4 .t,.g3 .t{font-size:15px;line-height:1.3;margin:4px 0 6px}
+}
+@media(max-width:600px){
+ /* menu fixo: sem o logo pequeno, para caber mais editorias */
+ .nav.solto .mini{width:0}
+ .menu a{padding:0 10px;font-size:14px}
+ /* títulos de seção e manchetes um pouco menores */
+ .sh h2{font-size:22px}.sh .i{width:24px;height:34px}
+ .lado .t{font-size:15px}
+ .lidas .t{font-size:15px}
+ .tt{font-size:28px}
+}
