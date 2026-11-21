@@ -288,3 +288,14 @@ footer .copy .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-conten
 .dock-x svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
 @media(prefers-reduced-motion:reduce){.dock-form,.dock-btn,.dock-x{transition:none}}
 @media(max-width:600px){.dock.aberto .dock-form{width:calc(100vw - 2*max(3vw,16px));background:var(--bg)}}
+
+/* ===== Redes sociais (Facebook e Instagram) ===== */
+.rede{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 16px 0 12px;border:1px solid var(--line);color:var(--ink);transition:background-color .2s,border-color .2s}
+.rede svg{width:20px;height:20px;fill:currentColor;flex:none}
+.rede:hover{background:var(--paper);border-color:var(--ink)}
+.redes-rod{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+footer .rede{color:var(--k4);border-color:var(--k1)}footer .rede:hover{background:var(--k1);border-color:var(--k2);text-decoration:none}
+.siga h2{margin:0 0 12px;font:700 22px var(--cond);text-transform:uppercase}
+.siga{display:grid;gap:8px}
+.siga .rede{padding:10px 14px}.siga .rede span{display:grid;line-height:1.25}.siga .rede small{color:var(--mut);font-size:13px}
+.canal .redes{flex-wrap:wrap;gap:8px}.canal .redes .rede{font:700 15px var(--heading-font);min-height:44px;white-space:nowrap;overflow-wrap:normal}.canal .redes .rede:hover{text-decoration:none}

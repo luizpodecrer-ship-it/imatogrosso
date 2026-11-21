@@ -32,6 +32,7 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **20/11/2026** — Busca do menu refeita a partir da referência "expanding search dock" (em JS puro): lupa redonda que se abre num campo de 320 px com lupa, texto e X; X ou Esc fecham e limpam; no celular o campo ocupa a largura toda. **Cantos retos** (o estilo do site não é arredondado).
 - **20/11/2026** — Linhas de divisão das seções finas (1 px preto, antes 3 px): títulos das seções, faixa abaixo da manchete, destaque da editoria e canais do contato.
 - **20/11/2026** — **Nada arredondado no portal**: todos os botões, filtros, assuntos, campos, seletor de tema e selos com cantos retos. Botões de compartilhar e redes sociais em quadrados com a mesma linha fina da busca (1 px cinza claro; escurece no mouse).
+- **21/11/2026** — Redes sociais do iMatoGrosso (links do site atual: Facebook profile.php?id=61579282092124 e Instagram @imatogrossomt): ícones no topo, botões com ícone no rodapé ("Siga-nos"), bloco "Siga o iMatoGrosso" na lateral da notícia e da editoria, e botões na página de Contato. Todos abrem em nova aba.
 
 ## Em aberto
 
