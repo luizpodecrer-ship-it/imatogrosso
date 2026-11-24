@@ -11,6 +11,8 @@ index.html                 home
 noticia.html               página da notícia (single.php)
 privacidade.html           Política de Privacidade (página do WordPress)
 editoria.html              página da editoria (category.php), ?e=policial|noticias|cidades|geral|esportes
+busca.html                 resultado da busca (search.php), ?s=termo
+404.html                   página não encontrada (404.php); tem <base href="/"> para carregar os arquivos em qualquer endereço
 contato.html               Contato (página + Contact Form 7 para atendimento@imatogrosso.com.br)
 assets/css/style.css       todo o visual (variáveis no topo)
 assets/js/main.js          dados de exemplo + menu, faixa "Últimas", busca, filtro de cidades, seletor de tema
@@ -60,6 +62,8 @@ assets/img/fotos/          fotos de exemplo
 | `banner-top-728x90` | 728 × 90 | cabeçalho, ao lado do logo |
 | `banner-esquerdo-inferior-300x250` | 300 × 250 | linha "Mais lidas", à esquerda |
 | `banner-direito-inferior-300x250` | 300 × 250 | linha "Mais lidas", à direita |
+
+Na busca e na editoria há também `banner-busca-lateral-300x250` e `banner-editoria-lateral-300x250` (lateral).
 
 Na página da notícia, além do 728 × 90 do topo, há duas posições novas no mesmo formato 300 × 250 (aprovadas):
 

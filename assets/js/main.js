@@ -56,7 +56,7 @@ $('bt').addEventListener('click',abreBusca);
 $('dock-x').addEventListener('click',()=>fechaBusca(true));
 dform.addEventListener('keydown',e=>{if(e.key==='Escape')fechaBusca(true)});
 document.addEventListener('click',e=>{if(dock.classList.contains('aberto')&&!dock.contains(e.target)&&!$('q').value)fechaBusca(false)});
-$('fb-form').addEventListener('submit',e=>{e.preventDefault();if(!$('q').value.trim())$('q').focus()});
+$('fb-form').addEventListener('submit',e=>{if(!$('q').value.trim()){e.preventDefault();$('q').focus()}});
 /* tema: botão claro/escuro animado. Sem escolha salva, segue o aparelho; a escolha fica guardada neste navegador */
 const raiz=document.documentElement,tg=$('tema-tg'),mq=matchMedia('(prefers-color-scheme: dark)');
 const escuroAgora=()=>raiz.dataset.theme?raiz.dataset.theme==='dark':mq.matches;
@@ -109,7 +109,7 @@ if($('pg-contato')){
 }
 /* página da editoria: editoria.html?e=policial|noticias|cidades|geral|esportes
    [chapéu, título, quando, resumo, foto ('' = sem foto), cidade]  — no WordPress: posts da categoria */
-if($('editoria')){
+/* dados de exemplo das editorias (usados pela editoria e pela busca) */
  const MT='Mato Grosso',CB='Cuiabá',VG='Várzea Grande',IN='Interior';
  const EDS={
   policial:{nome:'Policial',desc:'Ocorrências, operações e segurança pública em Cuiabá, Várzea Grande e todo o Mato Grosso.',itens:[
@@ -177,6 +177,7 @@ if($('editoria')){
    ['Tênis de mesa','São José dos Campos sediará WTT Star Contender em julho','16/11/2026','','','Brasil'],
    ['Tênis','João Fonseca encara ex-top 3 Cilic na estreia do Masters 1000 de Madri','15/11/2026','','','Mundo']]}
  };
+if($('editoria')){
  let chave='policial';try{chave=new URLSearchParams(location.search).get('e')||'policial'}catch(e){}
  if(!EDS[chave])chave='policial';
  const ed=EDS[chave],POR=6;
@@ -204,5 +205,40 @@ if($('editoria')){
  $('ed-mais').addEventListener('click',()=>{const antes=mostra;mostra+=POR;pinta();$('ed-lista').children[antes]?.querySelector('a')?.focus()});
  pinta();
  $('lidas').innerHTML=ed.itens.slice(1,6).map(n=>`<li><a href="noticia.html"><h3 class="t">${n[1]}</h3></a></li>`).join('');
+}
+/* ===== Busca: busca.html?s=termo (no WordPress: search.php com ?s=) ===== */
+const semAcento=t=>t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+if($('busca')){
+ const ORDEM_ED=['policial','noticias','cidades','geral','esportes'];
+ const todas=[],vistos=new Set();
+ ORDEM_ED.forEach(k=>EDS[k].itens.forEach(n=>{if(!vistos.has(n[1])){vistos.add(n[1]);todas.push({n,ed:k,nome:EDS[k].nome})}}));
+ let termo='';try{termo=(new URLSearchParams(location.search).get('s')||'').trim()}catch(e){}
+ $('bq').value=termo;
+ const marca=(t,ps)=>{let h=esc(t);ps.forEach(p=>{const re=new RegExp('('+p.split('').map(c=>{const b=semAcento(c);return 'aeiouc'.includes(b)?'['+({a:'aáàâã',e:'eéê',i:'ií',o:'oóôõ',u:'uúü',c:'cç'}[b])+']':c.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('')+')','gi');h=h.replace(re,'<mark>$1</mark>')});return h};
+ const ps=semAcento(termo).split(/\s+/).filter(p=>p.length>1);
+ const achou=ps.length?todas.filter(o=>{const t=semAcento(o.n[1]+' '+o.n[0]+' '+o.n[5]+' '+o.nome);return ps.every(p=>t.includes(p))}):[];
+ document.title=(termo?'Busca: '+termo:'Busca')+' · iMatoGrosso';
+ const POR=8;let filtro='todas',mostra=POR;
+ const item=o=>`<li><a href="noticia.html">${ph(o.n[4])}<div><div class="chap">${o.nome} · ${esc(o.n[0])}</div><h3 class="t">${marca(o.n[1],ps)}</h3><span class="hora">${o.n[2]}</span></div></a></li>`;
+ const pinta=()=>{
+  const l=filtro==='todas'?achou:achou.filter(o=>o.ed===filtro);
+  $('b-lista').innerHTML=l.slice(0,mostra).map(item).join('');
+  $('b-mais').hidden=l.length<=mostra;
+  $('b-qtd').innerHTML=!termo?'Digite o que você procura no campo acima.':achou.length?`<b>${achou.length}</b> ${achou.length===1?'notícia encontrada':'notícias encontradas'} para <b>“${esc(termo)}”</b>`:`Nenhuma notícia encontrada para <b>“${esc(termo)}”</b>.`;
+  $('b-vazio').hidden=!!achou.length;
+ };
+ const eds=ORDEM_ED.filter(k=>achou.some(o=>o.ed===k));
+ if(eds.length>1){$('b-chips').innerHTML=[['todas','Todas'],...eds.map(k=>[k,EDS[k].nome])].map(([k,t],i)=>`<button type="button" data-ed="${k}" aria-pressed="${!i}">${t} <span class="n">${k==='todas'?achou.length:achou.filter(o=>o.ed===k).length}</span></button>`).join('');
+  $('b-chips').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$('b-chips').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));filtro=b.dataset.ed;mostra=POR;pinta()})}
+ else $('b-chips').remove();
+ $('b-mais').addEventListener('click',()=>{const antes=mostra;mostra+=POR;pinta();$('b-lista').children[antes]?.querySelector('a')?.focus()});
+ pinta();
+ $('lidas').innerHTML=todas.slice(0,5).map(o=>`<li><a href="noticia.html"><h3 class="t">${o.n[1]}</h3></a></li>`).join('');
+ if(!termo)$('bq').focus();
+}
+/* ===== Página 404 ===== */
+if($('p404')){
+ $('p404-ult').innerHTML=[...EDS.noticias.itens.slice(0,2),EDS.policial.itens[0],EDS.esportes.itens[0]].map(n=>card(n)).join('');
 }
 })();

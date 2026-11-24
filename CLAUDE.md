@@ -37,13 +37,14 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **21/11/2026** — **Todos os ícones de botão se desenham** (mesma técnica do botão claro/escuro): ícones de traço (Facebook, Instagram, e-mail, lupa, WhatsApp, X, link, fechar) com `pathLength=1`; ao passar o mouse, focar pelo teclado ou tocar, o traço se redesenha (keyframe `desenha` no fim do `style.css`). O X e a lupa da busca se desenham ao abrir o campo.
 - **21/11/2026** — Celular (até 480 px): cartões de notícia com foto à esquerda e chapéu, título e hora juntos à direita, com linha fina entre eles; menu fixo sem o logo pequeno (até 600 px); títulos de seção, destaques, Mais lidas e título da notícia um pouco menores.
 - **21/11/2026** — Filtros de cidade sempre na **mesma ordem** em todas as páginas: Todas, Cuiabá, Várzea Grande, Rondonópolis, Interior, Mato Grosso, Brasil, Mundo (`ORDEM_CID` no `main.js`). Cidades do interior (Sinop, Barra do Garças…) entram no filtro "Interior"; o chapéu continua com o nome da cidade.
+- **24/11/2026** — **Página de busca** (`busca.html?s=termo`): campo grande, "N notícias encontradas para …", filtro por editoria com contagem (na ordem do menu), resultados com a palavra destacada (acha com ou sem acento), "Carregar mais resultados", ajuda quando não acha nada (dicas + editorias), lateral 300×250 e Mais lidas. A lupa do menu leva para ela.
+- **24/11/2026** — **Página 404** (`404.html`, o Netlify mostra sozinho em qualquer endereço que não existe): "4 [ícone i] 4", "Página não encontrada", campo de busca, "Voltar para a Home", atalhos das editorias e "Últimas notícias".
 
 ## Em aberto
 
 - Dados reais do controlador na Política de Privacidade (hoje fictícios).
 
 - Posição de anúncio com botão "x" que existe no site atual (vazia hoje).
-- Próximas telas sugeridas: resultado da busca e página 404.
 
 ## Publicar
 
