@@ -39,6 +39,7 @@ Front-end do portal de notícias imatogrosso.com.br (cliente do Luiz). Entregue 
 - **21/11/2026** — Filtros de cidade sempre na **mesma ordem** em todas as páginas: Todas, Cuiabá, Várzea Grande, Rondonópolis, Interior, Mato Grosso, Brasil, Mundo (`ORDEM_CID` no `main.js`). Cidades do interior (Sinop, Barra do Garças…) entram no filtro "Interior"; o chapéu continua com o nome da cidade.
 - **24/11/2026** — **Página de busca** (`busca.html?s=termo`): campo grande, "N notícias encontradas para …", filtro por editoria com contagem (na ordem do menu), resultados com a palavra destacada (acha com ou sem acento), "Carregar mais resultados", ajuda quando não acha nada (dicas + editorias), lateral 300×250 e Mais lidas. A lupa do menu leva para ela.
 - **24/11/2026** — **Página 404** (`404.html`, o Netlify mostra sozinho em qualquer endereço que não existe): "4 [ícone i] 4", "Página não encontrada", campo de busca, "Voltar para a Home", atalhos das editorias e "Últimas notícias".
+- **24/11/2026** — Revisão completa no celular (320, 375 e 414 px, claro e escuro, 9 telas): alvos de toque com no mínimo 40–44 px (ícones do topo, A−/A+, e-mails do contato, Mais lidas, rodapé), contraste AA no menu e no rodapé, ponta do menu esmaecida para indicar que arrasta, Mais lidas e "Siga" na largura toda, índice da política em duas colunas e tabela em 15 px.
 
 ## Em aberto
 
