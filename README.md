@@ -4,6 +4,39 @@ Front-end do novo portal **imatogrosso.com.br**, em HTML, CSS e JavaScript puros
 
 Abra `index.html` no navegador para ver a home. As manchetes e fotos são de exemplo (tiradas do site atual); no WordPress vêm dos posts.
 
+## Comece aqui (para o desenvolvedor)
+
+- **Ver funcionando:** https://imatogrosso.netlify.app (versão aprovada pelo cliente). Para rodar local, abra `index.html` no navegador; para testar a 404, sirva a pasta com qualquer servidor estático.
+- **Fonte da verdade do visual:** este repositório. HTML, CSS e JS puros, sem build. A ideia é virar um tema WordPress próprio, aproveitando `assets/css/style.css` e `assets/js/main.js` quase sem mudança.
+- **Decisões aprovadas pelo cliente**, com datas: `CLAUDE.md` (seção "Decisões aprovadas"). Leia antes de mudar qualquer coisa visual.
+
+### Páginas → arquivos do tema
+
+| Protótipo | Tema WordPress |
+|---|---|
+| `index.html` | `front-page.php` |
+| `noticia.html` | `single.php` |
+| `editoria.html?e=…` | `category.php` (uma para todas as categorias) |
+| `busca.html?s=…` | `search.php` |
+| `contato.html`, `privacidade.html` | `page.php` (ou modelos de página) |
+| `404.html` | `404.php` |
+| topo, menu, rodapé (repetidos em todas) | `header.php`, `footer.php` |
+
+### O que é só demonstração e precisa do back-end
+
+- **Notícias, fotos, Mais lidas, Últimas, filtros de cidade e busca:** hoje vêm de dados de exemplo no topo de `main.js` (`lead`, `lado`, `pol`… e `EDS`). Trocar por `WP_Query`; o HTML de cada cartão está nas funções `card`, `item` e `ph` de `main.js`. Notícia sem imagem destacada usa o bloco `.ph.semfoto`.
+- **Formulário de comentários:** `comments_template()` com moderação.
+- **Formulário de contato:** Contact Form 7 (ou similar) enviando para atendimento@imatogrosso.com.br; manter os campos e o aviso da Política.
+- **Banners:** WP Bannerize nas posições listadas em "Publicidade" (as atuais continuam com os mesmos nomes).
+- **Cidade da notícia** (para os filtros): tag ou campo personalizado; ordem fixa em `ORDEM_CID` (`main.js`).
+- **Tempo em "Hoje"** e data do topo: widget de previsão / data do servidor (fuso America/Cuiaba).
+- **Política de Privacidade:** os dados do controlador (razão social, CNPJ, encarregado, e-mail) são **fictícios** — trocar pelos reais antes de publicar.
+- **SEO:** título, descrição e `og:*` pelo Yoast ou RankMath.
+
+### Não mexer sem falar com o cliente
+
+Paleta (só preto, grafites, cinza, névoa e branco; nada de vermelho), fontes Poppins + Libre Franklin, cantos retos em tudo, menu e banners nos formatos aprovados.
+
 ## Estrutura
 
 ```
